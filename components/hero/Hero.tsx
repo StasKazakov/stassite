@@ -72,9 +72,9 @@ const Hero = () => {
           <Image
             src="/assets/robot.png"
             alt="Robot Image"
-            width={560}
-            height={560}
-            className="lg:w-[500px] lg:h-[500px] 2xl:w-[560px] 2xl:h-[560px]"
+            width={686}
+            height={717}
+            className="lg:w-auto lg:h-[500px] 2xl:w-auto 2xl:h-[560px]"
             priority
           />
         </div>
