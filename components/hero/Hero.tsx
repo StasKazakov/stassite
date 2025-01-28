@@ -35,7 +35,7 @@ const Hero = () => {
               src="/assets/mrobot.png"
               alt="Robot Image"
               width={280}
-              height={280}
+              height={292}
               className="w-[270px] h-[270px] md:w-[280px] md:h-[280px]"
               priority
             />
@@ -74,6 +74,7 @@ const Hero = () => {
             alt="Robot Image"
             width={536}
             height={560}
+            quality={50}
             className="lg:w-auto lg:h-[500px] 2xl:w-auto 2xl:h-[560px]"
             priority
           />
