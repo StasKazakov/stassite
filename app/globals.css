@@ -1,21 +1,186 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.custom-heading {
+  line-height: 1.1; 
 }
+
+.custom-gradient-heading {
+  background-image: linear-gradient(90deg, #00ddff, #78ffd6); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+html {
+  background-color: #111827;
+  width: 100vw;
+  min-height: 100%;
+  height: auto;
+}
+
+/* Hidden scroll */
+::-webkit-scrollbar {
+display: none; 
+}
+
+/* Hidden scroll Firefox */
+* {
+scrollbar-width: none; /* Работает в Firefox */
+}
+
+/* Hidden scroll IE и Edge */
+* {
+-ms-overflow-style: none; 
+}
+
+
+.scrollPath {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.progressbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+  0%, 100% {
+      filter: hue-rotate(0deg);
+  }
+  50% {
+      filter: hue-rotate(360deg);
+  }
+}
+
+.progressbar::before,
+.progressbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #008aff, #00ffe7);
+  filter: blur(10px);
+}
+
+
+.zoom {
+  @apply transition-transform transform duration-1000 hover:scale-110;
+}
+
+.click { 
+  @apply active:scale-90 transition-transform duration-500
+}
+
+
+@property --d {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.card-effect {
+  position: relative;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.card-effect::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  padding: 8px;
+  border-radius: 28px;
+  z-index: -1;
+  background: conic-gradient(from var(--d, 0deg),
+    #21D4FD,
+    #0000 30deg 120deg,
+    #B721FF 150deg 180deg,
+    #0000 210deg 300deg,
+    #21D4FD 330deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+  linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: intersect;
+}
+
+.card-effect::after {
+  content: "";
+  position: absolute;
+  inset: -100px;
+  background: radial-gradient(150px at left 200px top 120px, #21D4FD 98%, #0000),
+              radial-gradient(150px at right 200px bottom 120px, #B721FF 98%, #0000);
+  filter: blur(60px);
+  opacity: .5;
+  z-index: -1;
+}
+
+.card-effect::before, .card-effect::after {
+  transition: .5s, 9999999s 9999999s transform, 9999999s 9999999s --d;
+}
+
+.card-effect:hover {
+  box-shadow: 0 0 1px #666;
+}
+
+.card-effect:hover::after {
+  transform: rotate(3600deg);
+  transition: .5s, 60s linear transform;
+}
+
+.card-effect:hover::before {
+  --d: 3600deg;
+  transition: .5s, 60s linear --d;
+}
+
+#slider-container {
+  overflow-x: auto; 
+  display: flex; 
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%; 
+}
+
+.custom-button {
+  padding: 0.5rem 2rem;
+  border: 2px solid #00ddff;
+  color: #00ddff;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: #00ddff;
+  color: #030712;
+}
+
