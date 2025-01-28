@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from 'react';
 import { HiDocumentDownload } from "react-icons/hi";
-// import { ParticlesComponent } from "./Part"
+import { ParticlesComponent } from "./Part"
 
 const Hero = () => {
   const [downloaded, setDownloaded] = useState(false);
@@ -20,9 +20,9 @@ const Hero = () => {
       lg:py-0 2xl:w-[90%]"
     >
       {/* Background */}
-      {/* <div className="absolute z-[-1] h-[100vh] w-full">
+      <div className="absolute z-[-1] h-[100vh] w-full">
         <ParticlesComponent id='particles' />
-      </div> */}
+      </div>
 
       <div className="flex flex-col lg:flex-row items-center text-center gap-3 z-10 w-full lg:max-w-[95%] lg:mx-auto">
         <div className="lg:w-1/2 flex flex-col items-center">

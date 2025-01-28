@@ -1,4 +1,6 @@
+import Scroll from './scroll/Scroll'
 import Hero from './hero/Hero';
+import Expertise from './expertise/Expertise'
 
 const Home = () => {
 //   const [isMobile, setIsMobile] = useState(false);
@@ -16,7 +18,9 @@ const Home = () => {
 
   return (
     <div>
-        <Hero />
+      <Scroll />
+      <Hero />
+      <Expertise />
     </div>
   )
 }
