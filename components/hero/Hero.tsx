@@ -34,9 +34,10 @@ const Hero = () => {
             <Image
               src="/assets/mrobot.png"
               alt="Robot Image"
-              width={280}
-              height={292}
-              className="w-[270px] h-[270px] md:w-[280px] md:h-[280px]"
+              width={268}
+              height={280}
+              quality={50}
+              className="w-auto h-[270px] md:w-auto md:h-[280px]"
               priority
             />
           </div>
