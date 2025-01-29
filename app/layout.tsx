@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stas Kazakov Developer",
     description: "Stas Kazakov, Full Stack Developer. Web application development with AI for business.",
-    images: ["assets/prev.png"],
+    images: ["assets/prev.webp"],
     url: "https://staskazakov.com",
     type: "website",
   },

@@ -71,7 +71,7 @@ const Hero = () => {
 
         <div className="hidden lg:flex lg:w-1/2 lg:justify-end lg:mt-auto lg:items-center xl:justify-center">
           <Image
-            src="/assets/robot.png"
+            src="/assets/robot.webp"
             alt="Robot Image"
             width={536}
             height={560}
