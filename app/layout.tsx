@@ -14,7 +14,10 @@ export const metadata: Metadata = {
     images: ["assets/prev.png"],
     url: "https://staskazakov.com",
     type: "website",
-  }
+  },
+  alternates: {
+    canonical: "https://staskazakov.com",
+  },
 }
 
 export default function RootLayout({
