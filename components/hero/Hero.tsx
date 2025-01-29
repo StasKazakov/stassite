@@ -32,7 +32,7 @@ const Hero = () => {
 
           <div className="flex justify-center order-2 w-full lg:hidden">
             <Image
-              src="/assets/mrobot.png"
+              src="/assets/mrobot.webp"
               alt="Robot Image"
               width={268}
               height={280}
