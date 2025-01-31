@@ -127,7 +127,7 @@ const Contacts: React.FC = () => {
             )}
             </div>
             
-            <div className="flex flex-col justify-center xl:w-1/2">
+            <div className="flex flex-col justify-center xl:w-1/2 xl:gap-y-20">
                 <Animation />
                 <Social />
             </div>
