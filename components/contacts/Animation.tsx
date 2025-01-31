@@ -1,17 +1,23 @@
-import React from 'react'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { useEffect, useRef } from 'react';
+import lottie from 'lottie-web';
+import animationData from '../../public/lottie/contact.json';
 
 const Animation = () => {
-  return (
-    <div className='flex justify-center items-center h-full p-0 m-0 xl:-mt-28 lg:mb-12'>
-    <DotLottieReact
-      src='/lottie/contact.json'
-      loop
-      autoplay
-      className='scale-[1.5] translate-y-[10%] pt-4 pb-12'
-    />
-    </div>
-  )
-}
+  const container = useRef<HTMLDivElement>(null);
 
-export default Animation
+  useEffect(() => {
+    if (container.current) {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData, 
+      });
+    }
+  }, []);
+
+  return <div ref={container} className='animation-container'></div>;
+};
+
+export default Animation;
