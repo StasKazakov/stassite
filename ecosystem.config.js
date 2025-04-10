@@ -4,7 +4,7 @@ module.exports = {
         name: "site", 
         script: "npm",
         args: "start", 
-        cwd: "/home/ubuntu/stassite", 
+        cwd: "/home/ubuntu/staskazakovcom", 
         env: {
           NODE_ENV: "production", 
           PORT: 3000, 
