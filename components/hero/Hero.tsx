@@ -60,7 +60,7 @@ const Hero = () => {
             className={`flex items-center justify-center gap-2  
             ${downloaded ? 'bg-[#FF1493] text-white' : 'bg-[#00ddff] text-gray-900' }
             hover:bg-[#FF1493] hover:text-white px-6 py-4 rounded-lg text-2xl md:text-3xl
-            transition-colors duration-1000 order-5 lg:order-4 font-bold`}
+            transition-colors duration-1000 order-5 lg:order-4 font-bold cursor-pointer`}
             onClick={download}
             disabled={downloaded}
           >
