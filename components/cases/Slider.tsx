@@ -72,7 +72,7 @@ const Slider = () => {
         window.removeEventListener('resize', updateVisibleCards);
       };
     }
-  }, []);
+  }, [updateVisibleCards]);
 
   return (
     <div className="w-full flex items-center mb-10 relative">
