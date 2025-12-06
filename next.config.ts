@@ -11,8 +11,23 @@ const nextConfig: NextConfig = {
         source: '/api/order',
         destination: 'http://localhost:5400/vls',
       },
+      {
+        source: '/antispam',
+        destination: 'http://localhost:3333',
+      },
     ];
   },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production", 
+  },
+
+  experimental: {
+    esmExternals: true, 
+  },
+
+
 };
+
 
 export default nextConfig;

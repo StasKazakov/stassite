@@ -39,6 +39,7 @@ const Hero = () => {
               quality={50}
               className="w-auto h-[270px] md:w-auto md:h-[280px]"
               priority
+              fetchPriority="high"
             />
           </div>
 
@@ -50,7 +51,7 @@ const Hero = () => {
           <h3 className="text-xl 2xl:text-2xl text-white lg:max-w-[500px] order-4 lg:order-3 mb-4 lg:mb-8">
             Unlock the full potential of your business by leveraging advanced technologies like
             <span className="font-bold custom-gradient-heading"> Web Development</span>,
-            <span className="font-bold custom-gradient-heading"> AI</span>,
+            <span className="font-bold custom-gradient-heading"> AI </span>
             and <span className="font-bold custom-gradient-heading"> Blockchain</span>.
             Create innovative solutions that drive growth, enhance efficiency,
             and stay ahead of the competition.
@@ -78,6 +79,7 @@ const Hero = () => {
             quality={50}
             className="lg:w-auto lg:h-[500px] 2xl:w-auto 2xl:h-[560px]"
             priority
+            fetchPriority="high"
           />
         </div>
       </div>

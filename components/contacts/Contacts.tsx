@@ -38,29 +38,46 @@ const Contacts: React.FC = () => {
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus({ message: '', isError: false });
-  
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-  
-      const result = await response.json();
-      setStatus({ message: result.message || 'Message sent successfully!', isError: false });
-      setIsSubmitted(true); 
-    } catch (error) {
-      setStatus({ message: 'Failed to send message. Please try again.', isError: true });
-      console.log(error);
+  e.preventDefault();
+  setStatus({ message: '', isError: false });
+
+  try {
+    const antispamResponse = await fetch('/antispam', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const antispamResult = await antispamResponse.json();
+
+    if (antispamResult.code === 200 && antispamResult.message === 'spam') {
+      setStatus({ message: 'Message sent successfully!', isError: false });
+      setIsSubmitted(true);
+      return; 
     }
-  };
-  
+
+    if (antispamResult.code !== 200 || antispamResult.message !== 'ok') {
+      throw new Error('Antispam check failed');
+    }
+
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send message');
+    }
+
+    const result = await response.json();
+    setStatus({ message: result.message || 'Message sent successfully!', isError: false });
+    setIsSubmitted(true);
+  } catch (error) {
+    console.error(error);
+    setStatus({ message: 'Failed to send message. Please try again.', isError: true });
+  }
+};
     
   return (
     <section id='contacts' className='mx-auto bg-[#030712] h-fit w-max-full 
@@ -85,15 +102,17 @@ const Contacts: React.FC = () => {
                   <input 
                     type="text"
                     name="name"
+                    aria-label="Name"
                     value={formData.name}
                     onChange={handleInputChange}
                     required 
                     className="border-2 border-[#00ddff] bg-[#030712] 
-                  rounded-lg text-white w-full text-2xl focus:outline-none mb-2 px-2 py-1" />
+                    rounded-lg text-white w-full text-2xl focus:outline-none mb-2 px-2 py-1" />
                   <p className="text-white text-xl mb-1 pl-2">Your mail:</p>
                   <input 
                     type="email"
                     name="email"
+                    aria-label="Email"
                     value={formData.email}
                     onChange={handleInputChange}
                     required 
@@ -102,6 +121,7 @@ const Contacts: React.FC = () => {
                   <p className="text-white text-xl mb-1 pl-2">Message:</p>
                   <textarea
                     name="message"
+                    aria-label="Message"
                     value={formData.message}
                     onChange={handleInputChange}
                     required  
@@ -110,6 +130,7 @@ const Contacts: React.FC = () => {
                     className="border-2 border-[#00ddff] bg-[#030712] rounded-lg text-white 
                     w-full text-2xl focus:outline-none md:mb-8 px-2 py-1 xl:mb-2">
                   </textarea>
+
                   <div className="flex justify-center mb-2">
                     <button className="custom-button my-4">
                       Send

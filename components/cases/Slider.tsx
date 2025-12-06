@@ -78,6 +78,7 @@ const Slider = () => {
     <div className="w-full flex items-center mb-10 relative">
       <button
         onClick={scrollLeft}
+        aria-label="Previous project"
         className="absolute left-1 text-[#00ddff] flex items-center 
         justify-center text-7xl md:text-9xl 
         xl:text-8xl 2xl:text-9xl z-50 opacity-20 
@@ -107,6 +108,7 @@ const Slider = () => {
 
       <button
         onClick={scrollRight}
+        aria-label="Next project"
         className="absolute right-0 text-[#00ddff] flex items-center justify-center 
         text-7xl md:text-9xl xl:text-8xl 2xl:text-9xl z-10 opacity-20 hover:opacity-100 
         transition-opacity duration-1000 "
